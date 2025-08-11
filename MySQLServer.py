@@ -7,7 +7,7 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 try:
     mycursor.execute("""
-        CREATE DATABASE alx_book_store
+        CREATE DATABASE IF NOT EXIST alx_book_store
     """)
 except mysql.connector.Error as e:
     print("Error: Database already exist")
