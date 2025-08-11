@@ -1,16 +1,18 @@
 import mysql.connector
 
-mydb = mysql.connector.connect(
-    host="localhost",user="root", password=""
-)
+try:
+    mydb = mysql.connector.connect(
+        host="localhost",user="root", password=""
+    )
+except mysql.connector.Error as e:
+    print("Error: Unable to connect", e)
 
 mycursor = mydb.cursor()
-try:
-    mycursor.execute("""
-        CREATE DATABASE IF NOT EXIST alx_book_store
-    """)
-except mysql.connector.Error as e:
-    print("Error: Database already exist")
+
+mycursor.execute("""
+        CREATE DATABASE IF NOT EXISTS alx_book_store
+""")
+
 
 print("Database 'alx_book_stor' created successfully")
 mycursor.close()
