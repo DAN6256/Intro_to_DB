@@ -5,9 +5,12 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
-mycursor.execute("""
-    CREATE DATABASE IF NOT EXISTS alx_book_store
-""")
+try:
+    mycursor.execute("""
+        CREATE DATABASE alx_book_store
+    """)
+except mysql.connector.Error as e:
+    print("Error: Database already exist")
 
 print("Database 'alx_book_stor' created successfully")
 mycursor.close()
